@@ -7,7 +7,7 @@
 }
 
 .container {
-  max-width: 1440px; 
+  max-width: 1700px; 
   margin: 0 auto;
   padding: 0 120px; 
   display: flex;
@@ -17,7 +17,7 @@
 /*верхняяя часть*/
 
 .header-top {
-  padding: 40px 0;
+  padding: 30px 0;
   background-color: white;
   border-bottom: 1px solid #eee;
   width: 100%;
@@ -37,7 +37,7 @@
   width: 55%;
   height: auto;
   bottom: -5px;
-  left: 10px;
+  left: -60px;
   z-index: 1;
   transform: scale(0.5);
 }
@@ -47,7 +47,7 @@
   width: 100%;
   height: auto;
   top: 150;
-  left: 0px;
+  left: -70px;
   z-index: 2;
 }
 
@@ -57,7 +57,7 @@
   display: flex;
   align-items: center;
   justify-content: center; 
-  gap: 70px; 
+  gap: 95px; 
   flex-grow: 1;
 }
 
@@ -79,20 +79,29 @@
 /*навигация*/
 
 .nav-container {
-  background-color: #FFD700; 
-  padding: 10px 0px;
+  background-color: #FFDE00;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 10px 0;
+  box-sizing: border-box;
 }
 
 .main-nav {
-  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 120px;
 }
 
 .nav-list {
   display: flex;
   list-style: none;
-  margin: 5px;
-  padding:0;
-  justify-content: space-between; 
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
 }
 
 .nav-item {
@@ -105,6 +114,16 @@
   transition: all 0.3s ease;
   white-space: nowrap;
   position: relative;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.611);
+  border-radius: 20px;
+}
+
+.nav-item.active {
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
 }
 
 .nav-item:nth-child(-n+3) {
@@ -227,3 +246,4 @@
 .view-container button:hover {
   background-color: #e6c200;
 }
+

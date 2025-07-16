@@ -125,22 +125,20 @@ const Header = () => {
           </div>
 
           <div className="nav-container">
-            <div className="container">
-              <nav className="main-nav">
-                <ul className="nav-list">
-                  {tabs.map(tab => (
-                    <li 
-                      key={tab}
-                      className={`nav-item ${activeTab === tab ? 'active' : ''}`}
-                      onClick={() => setActiveTab(tab)}
-                    >
-                      {tab}
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
-          </div>
+            <div className="main-nav">
+             <ul className="nav-list">
+              {tabs.map(tab => (
+               <li 
+                 key={tab}
+                 className={`nav-item ${activeTab === tab ? 'active' : ''}`}
+                 onClick={() => setActiveTab(tab)}
+               >
+                 {tab}
+               </li>
+             ))}
+           </ul>
+         </div>
+       </div>
         </>
       ) : currentView === 'cart' ? (
         <div className="view-container">
