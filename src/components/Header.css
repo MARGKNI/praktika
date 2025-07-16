@@ -78,9 +78,8 @@
 
 /*навигация*/
 
-/* Полная перезапись стилей навигации */
 .nav-container {
-  background-color: #FFD700;
+  background-color: #FFDE00;
   width: 100vw;
   position: relative;
   left: 50%;

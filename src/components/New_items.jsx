@@ -144,7 +144,7 @@ export default function HitsGrid() {
           }}
         />
         <BannerText variant="h4">
-          ХИТЫ ПРОДАЖ
+          НОВИНКИ
         </BannerText>
       </BannerContainer>
       

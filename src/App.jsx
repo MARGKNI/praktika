@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Banner from './components/Banner';
 import Categories from './components/Categories';
 import Bestsellers from './components/bestsellers'; 
+import New_items from './components/New_items';
 
 function App() {
   return (
@@ -27,8 +28,9 @@ function App() {
       <Box component="main" sx={{ flex: 1, p: 2, bgcolor: 'white' }}>
         <Banner />
         <Categories />
-        <Bestsellers /> {/* Добавленный компонент хитов продаж */}
-        
+        <Bestsellers />
+        <New_items />
+
         <Box component="section" sx={{ mt: 4 }}>
           <Box sx={{ 
             display: 'grid',
