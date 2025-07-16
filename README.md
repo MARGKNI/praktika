@@ -49,6 +49,11 @@ base: "/praktika/"
   "predeploy": "npm run build",
   "deploy": "gh-pages -d dist",
 
-3. Изменить package.json, секция root (где "name"), добавить
+4. Изменить package.json, секция root (где "name"), добавить
 
   "homepage": "https://margkni.github.io/praktika/",
+
+5. В настройках Pages репозитория указать ветку
+gh-pages
+
+
