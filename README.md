@@ -35,3 +35,25 @@ praktika/
 ├── index.html        # Главная страница
 ├── package.json      # Зависимости и скрипты
 └── vite.config.js    # Настройки Vite
+
+Деплой на GitHub Pages
+https://levelup.gitconnected.com/deploy-your-vite-app-to-github-pages-a-lazy-devs-guide-37b0b472fa35
+
+1. Добавить в vite.config.js
+base: "/praktika/"
+
+2. npm install gh-pages --save-dev
+
+3. Изменить package.json, секция scripts, добавить
+
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist",
+
+4. Изменить package.json, секция root (где "name"), добавить
+
+  "homepage": "https://margkni.github.io/praktika/",
+
+5. В настройках Pages репозитория указать ветку
+gh-pages
+
+
