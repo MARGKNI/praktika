@@ -1,29 +1,30 @@
 import React from 'react';
-import Header from './components/Header.jsx';
-import Footer from './components/Footer.jsx';
+import { Helmet } from 'react-helmet';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Banner from './components/Banner';
+import Categories from './components/Categories';
 import './App.css';
 
 function App() {
   return (
     <div className="app">
-      {/* Шапка сайта */}
+      <Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
+      
       <Header />
       
-      {/* Основное содержимое страницы */}
       <main className="main-content">
-        <h1>Добро пожаловать в наш магазин!</h1>
-        <p>Здесь будет основной контент вашего сайта...</p>
-        
-        {/* Пример секции - можно заменить на свои компоненты */}
+        <Banner />
+        <Categories />
+
         <section className="featured-products">
-          <h2>Популярные товары</h2>
           <div className="products-grid">
-            {/* Здесь будут карточки товаров */}
           </div>
         </section>
       </main>
       
-      {/* Подвал сайта */}
       <Footer />
     </div>
   );
