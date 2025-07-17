@@ -95,12 +95,15 @@ const BannerText = styled(Typography)({
 
 export default function CategoryGrid() {
   return (
-    <Box sx={{ 
-      flexGrow: 1, 
-      padding: 3,
-      maxWidth: '1600px',
-      margin: '0 auto',
-    }}>
+    <Box 
+      sx={{ 
+        flexGrow: 1, 
+        padding: 3,
+        maxWidth: '1600px',
+        margin: '0 auto',
+      }}
+      className="content-boundary" // Добавляем здесь
+    >
       <BannerContainer>
         <BannerImage
           src={lightBanner}

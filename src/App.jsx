@@ -7,6 +7,9 @@ import Banner from './components/Banner';
 import Categories from './components/Categories';
 import Bestsellers from './components/bestsellers'; 
 import New_items from './components/New_items';
+import Styles from './components/styles';
+import Brends from './components/Brends';
+import Info from './components/Info';
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
         <Categories />
         <Bestsellers />
         <New_items />
+        <Styles />
+        <Brends />
+        <Info />
 
         <Box component="section" sx={{ mt: 4 }}>
           <Box sx={{ 

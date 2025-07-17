@@ -1,51 +1,37 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Box from '@mui/material/Box';
 
-import product1 from '../assets/Layer_11.png';
-import product2 from '../assets/Layer_12.png';
-import product3 from '../assets/Layer_13.png';
-import product4 from '../assets/Layer_14.png';
+import style1 from '../assets/skan.png';
+import style2 from '../assets/loft.png';
+import style3 from '../assets/provans.png';
+import style4 from '../assets/sovr.png';
 import bannerImage from '../assets/Rectangle_1.png';
 
-const hits = [
+const styles = [
   { 
-    name: 'Подвесная люстра Mythony Grazia', 
-    code: 'MOD046PL-08CH',
-    image: product1, 
-    price: '19,677', 
-    oldPrice: '29,370' 
+    name: 'Скандинавский', 
+    image: style1
   },
   { 
-    name: 'Подвесная люстра Mythony Grazia', 
-    code: 'MOD046PL-08CH',
-    image: product2, 
-    price: '9,677', 
-    oldPrice: '29,370' 
+    name: 'Лофт', 
+    image: style2
   },
   { 
-    name: 'Подвесная люстра Mythony Grazia', 
-    code: 'MOD046PL-08CH',
-    image: product3, 
-    price: '9,677', 
-    oldPrice: '29,370' 
+    name: 'Прованс', 
+    image: style3
   },
   { 
-    name: 'Подвесная люстра Mythony Grazia', 
-    code: 'MOD046PL-08CH',
-    image: product4, 
-    price: '119,677', 
-    oldPrice: '29,370' 
+    name: 'Современный', 
+    image: style4
   },
 ];
 
-const extendedHits = [...hits, ...hits, ...hits];
+const extendedStyles = [...styles, ...styles, ...styles];
 
 const ScrollContainer = styled(Box)({
   display: 'flex',
@@ -60,7 +46,7 @@ const ScrollableGrid = styled(Box)({
   overflowX: 'auto',
   scrollBehavior: 'smooth',
   gap: '13px',
-  padding: '16px 0',
+  padding: '10px 0',
   scrollbarWidth: 'none',
   '&::-webkit-scrollbar': {
     display: 'none',
@@ -70,71 +56,27 @@ const ScrollableGrid = styled(Box)({
   marginLeft: '-12px', 
 });
 
-const ProductContainer = styled('div')({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '16px',
-  width: 'calc(25% - 18px)', 
-  minWidth: '280px',
+const StyleContainer = styled('div')({
+  position: 'relative',
+  minWidth: '210px',
   flexShrink: 0,
-  backgroundColor: '#fff',
 });
 
-const ProductImage = styled('img')({
+const StyleImage = styled('img')({
   width: '100%',
-  height: '280px',
-  objectFit: 'contain',
-  marginBottom: '30px',
+  height: '210px',
+  objectFit: 'cover',
 });
 
-const ProductName = styled(Typography)({
-  textAlign: 'center',
-  fontWeight: '400',
-  marginBottom: '1px',
-  textDecoration: 'underline',
-  fontSize: '1.2rem',
+const StyleName = styled(Typography)({
+  position: 'absolute',
+  top: '85%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  color: '#ffff',
+  fontSize: '24px',
+  fontWeight: '300',
 });
-
-const ProductCode = styled(Typography)({
-  textAlign: 'center',
-  fontSize: '0.9rem',
-  color: 'text.secondary',
-  marginBottom: '8px',
-  textDecoration: 'underline',
-});
-
-const PriceContainer = styled('div')({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  margin: '8px 0',
-});
-
-const CurrentPrice = styled(Typography)({
-  fontSize: '3rem',
-  color: '#000000',
-});
-
-const OldPrice = styled(Typography)({
-  fontSize: '1rem',
-  textDecoration: 'line-through',
-  color: '#777',
-});
-
-const AddButton = styled(Button)(({ theme }) => ({
-  fontWeight: 'bold',
-  padding: '6px 12px',
-  backgroundColor: '#FFDE00',
-  color: '#000000',
-  borderRadius: '20px',
-  fontSize: '0.875rem',
-  minWidth: '120px',
-  textTransform: 'none',
-  '&:hover': {
-    backgroundColor: '#fbc02d',
-  },
-}));
 
 const BannerContainer = styled('div')({
   width: '100%',
@@ -170,14 +112,14 @@ const ArrowButton = styled(IconButton)({
   },
 });
 
-export default function HitsGrid() {
+export default function StylesGrid() {
   const scrollRef = React.useRef(null);
   const [showLeftArrow, setShowLeftArrow] = React.useState(false);
   const [showRightArrow, setShowRightArrow] = React.useState(true);
 
   const scroll = (direction) => {
     if (scrollRef.current) {
-      const scrollAmount = 304; 
+      const scrollAmount = 304;
       scrollRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -210,14 +152,14 @@ export default function HitsGrid() {
       <BannerContainer>
         <BannerImage
           src={bannerImage}
-          alt="НОВИНКИ"
+          alt="СТИЛИ"
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = 'https://via.placeholder.com/1200x200?text=Хиты+продаж';
+            e.target.src = 'https://via.placeholder.com/1200x200?text=СТИЛИ';
           }}
         />
         <BannerText variant="h4">
-          НОВИНКИ
+          СТИЛИ
         </BannerText>
       </BannerContainer>
       
@@ -229,37 +171,18 @@ export default function HitsGrid() {
         )}
         
         <ScrollableGrid ref={scrollRef}>
-          {extendedHits.map((product, index) => (
-            <ProductContainer key={index}>
-              <ProductImage
-                src={product.image}
-                alt={product.name}
+          {extendedStyles.map((style, index) => (
+            <StyleContainer key={index}>
+              <StyleImage
+                src={style.image}
+                alt={style.name}
                 onError={(e) => {
                   e.target.onerror = null;
-                  e.target.src = 'https://via.placeholder.com/300x200?text=Изображение+не+найдено';
+                  e.target.src = 'https://via.placeholder.com/280x380?text=' + encodeURIComponent(style.name);
                 }}
               />
-              <ProductName variant="h6">
-                {product.name}
-              </ProductName>
-              <ProductCode>
-                {product.code}
-              </ProductCode>
-              <PriceContainer>
-                <CurrentPrice>
-                  {product.price} ₽
-                </CurrentPrice>
-                <OldPrice>
-                  {product.oldPrice} ₽
-                </OldPrice>
-              </PriceContainer>
-              <AddButton 
-                variant="contained"
-                size="small"
-              >
-                В корзину
-              </AddButton>
-            </ProductContainer>
+              <StyleName>{style.name}</StyleName>
+            </StyleContainer>
           ))}
         </ScrollableGrid>
         
