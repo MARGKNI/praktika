@@ -22,9 +22,9 @@ function App() {
       
       <Header />
       
-      {/* <Box component="main" sx={{ flex: 1, p: 2, bgcolor: 'white' }}>
+      <Box component="main" sx={{ flex: 1, p: 2, bgcolor: 'white' }}>
         <Banner />
-        <Categories />
+        {/* <Categories />
         <Bestsellers />
         <New_items />
 
@@ -36,10 +36,10 @@ function App() {
             mt: 2
           }}>
           </Box>
-        </Box>
+        </Box> */}
       </Box>
       
-      <Footer /> */}
+      <Footer />
     </Box>
   );
 }

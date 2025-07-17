@@ -1,0 +1,244 @@
+/*расположение баннеров*/
+
+.banner-container {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.banner-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.main-banner {
+  height: 480px; 
+  position: relative;
+  overflow: hidden;
+  width: 900px; 
+  flex: none; 
+}
+
+.base-layer {
+  position: absolute;
+  top: -202px;
+  left: 0;
+  width: 100%;
+  height: 125%;
+  background-position: center;
+  z-index: 1;
+}
+
+.black-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0.84);
+  z-index: 1.5;
+}
+
+.overlay-image {
+  position: absolute;
+  top: 400px; 
+  right: 100px;
+  height: 25%; 
+  z-index: 1;
+  object-fit: cover;
+}
+
+/*распродажа*/
+
+.main-banner .banner-content .sale-title {
+  top: -30px;
+  right: 45px;
+  position: relative;
+  font-size: 5rem;
+  color: #ffffff;
+  margin-left: 50px;
+  font-weight: 700;
+  line-height: 0.8;
+}
+
+/*ПЕРЕЙТИ К ТОВАРАМ*/
+
+.go-to-products-btn {
+  position: relative;
+  top: -82px;
+  right: -13px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.3s ease;
+  margin-top: 80px;
+  font-weight: 700;
+}
+
+.go-to-products-btn:hover {
+  transform: scale(1.05);
+}
+
+/*60*/
+
+.discount-text {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  font-weight: 500;
+  z-index: 1;
+  left: 255px;
+  position: relative;
+  top: 35px;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 1;
+  padding: 30px;
+  color: rgb(255, 255, 255);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main-banner .banner-content {
+  align-items: flex-start;
+  text-align: left;
+  left: 425px;
+}
+
+/*мал баннеры*/
+
+.right-banners {
+  width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.small-banner {
+  height: 230px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+/*лого для верхнего*/
+
+.top-banner-image {
+  position: absolute;
+  right: 5px; 
+  top: 90%;
+  transform: translateY(-50%);
+  height: 15%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/*подарок*/
+
+.bottom-banner-image {
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-70%);
+  height: 70%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/*с нами будет весело*/
+
+.top-banner-title {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #000;
+  margin: 0;
+  z-index: 2;
+}
+
+/*подробнее для 1*/
+
+.top-banner-link {
+  position: absolute;
+  bottom: 1px;
+  left: 15px;
+  color: #fd5e00;
+  font-size: 1rem;
+  text-decoration: none;
+  padding-bottom: 2px;
+  z-index: 2;
+  text-decoration: underline;
+}
+
+/*нижний баннер*/
+
+.bottom-banner-title {
+  position: absolute;
+  top: 70px;
+  right: 15px;
+  font-size: 3rem;
+  color: white;
+  margin: 0;
+  z-index: 2;
+}
+
+.bottom-banner-text {
+  position: absolute;
+  bottom: 60px;
+  right: 15px;
+  color: white;
+  font-size: 1rem;
+  margin: 0;
+  z-index: 2;
+  text-align: right;
+  line-height: 1.2;
+  font-weight: 100;
+}
+
+.bottom-banner-link {
+  position: absolute;
+  bottom: 1px;
+  right: 15px;
+  color: #fd5e00;
+  font-size: 1rem;
+  text-decoration: none;
+  padding-bottom: 2px;
+  z-index: 2;
+  text-decoration: underline;
+}
+
+/*клики*/
+
+.clickable {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clickable:hover {
+  opacity: 0.8;
+}
+
+.sale-view {
+  text-align: center;
+  padding: 40px;
+}
+
+.back-button {
+  background-color: #fd5e00;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+}

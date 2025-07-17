@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useMediaQuery, useTheme, Box, Button } from '@mui/material';
 import './Banner.css';
 import sale from '../assets/sale.png';
 import promotion from '../assets/Layer_47.png';
@@ -8,46 +9,54 @@ import logoGor from '../assets/logo_gor.png';
 import banBig from '../assets/ban_big.png';
 
 const Banner = () => {
-  const [currentView, setCurrentView] = useState('main');
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <div className="banner-container">
-      {currentView === 'main' ? (
-        <div className="banner-grid">
-          <div className="main-banner">
-            <div className="base-layer" style={{ backgroundImage: `url(${sale})` }} />
-            <div className="black-overlay" />
-            <img src={overlay} alt="" className="overlay-image" />
-            <div className="banner-content right-position">
-              <h1 className="sale-title">РАСПРО<br/>ДАЖА</h1>
-              <button className="go-to-products-btn clickable" onClick={() => setCurrentView('sale')}>ПЕРЕЙТИ К ТОВАРАМ</button>
-              <h2 className="discount-text">СКИДКИ<br/>до 60%</h2>
-            </div>
-          </div>
-
-          <div className="right-banners">
-            <div className="small-banner top-banner" style={{ backgroundImage: `url(${discount})` }}>
-              <img src={logoGor} alt="" className="top-banner-image" />
-              <h2 className="top-banner-title">С НАМИ<br/>БУДЕТ<br/>СВЕТЛО</h2>
-              <a href="#" className="top-banner-link">Подробнее</a>
-            </div>
-
-            <div className="small-banner bottom-banner" style={{ backgroundImage: `url(${promotion})` }}>
-              <img src={banBig} alt="" className="bottom-banner-image" />
-              <h2 className="bottom-banner-title">АКЦИЯ</h2>
-              <h2 className="bottom-banner-text">Лампочка для люстр<br/>в подарок</h2>
-              <a href="#" className="bottom-banner-link">Подробнее</a>
-            </div>
+      <div className={`banner-layout ${isMobile ? 'mobile' : ''}`}>
+        {/* Главный баннер */}
+        <div 
+          className="main-banner"
+          style={{ 
+            backgroundImage: `url(${sale})`,
+          }}
+        >
+          <div className="banner-overlay" />
+          <img src={overlay} alt="" className="decoration-image" />
+          <div className="banner-content">
+            <h1>РАСПРО<br/>ДАЖА</h1>
+            <Button variant="outlined" className="action-btn">
+              ПЕРЕЙТИ К ТОВАРАМ
+            </Button>
+            <p>СКИДКИ<br/>до 60%</p>
           </div>
         </div>
-      ) : (
-        <div className="sale-view">
-          <h1>Распродажа котиков</h1>
-          <button  className="back-button clickable" onClick={() => setCurrentView('main')}>
-            Вернуться на главную
-          </button>
+
+        {/* Боковые баннеры */}
+        <div className="side-banners">
+          {/* Второй баннер (верхний) */}
+          <div 
+            className="small-banner top-banner"
+            style={{ backgroundImage: `url(${discount})` }}
+          >
+            <img src={logoGor} alt="" className="top-banner-logo" />
+            <h2>С НАМИ<br/>БУДЕТ<br/>СВЕТЛО</h2>
+            <a href="#">Подробнее</a>
+          </div>
+          
+          {/* Третий баннер (нижний) */}
+          <div 
+            className="small-banner bottom-banner"
+            style={{ backgroundImage: `url(${promotion})` }}
+          >
+            <img src={banBig} alt="" className="bottom-banner-image" />
+            <h2>АКЦИЯ</h2>
+            <p>Лампочка для люстр<br/>в подарок</p>
+            <a href="#">Подробнее</a>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
