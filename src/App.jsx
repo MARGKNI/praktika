@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { CssBaseline, Box } from '@mui/material';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -18,14 +17,12 @@ function App() {
       fontFamily: 'Arial, sans-serif',
       overflowX: 'hidden'
     }}>
-      <Helmet>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Helmet>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <CssBaseline />
       
       <Header />
       
-      <Box component="main" sx={{ flex: 1, p: 2, bgcolor: 'white' }}>
+      {/* <Box component="main" sx={{ flex: 1, p: 2, bgcolor: 'white' }}>
         <Banner />
         <Categories />
         <Bestsellers />
@@ -42,7 +39,7 @@ function App() {
         </Box>
       </Box>
       
-      <Footer />
+      <Footer /> */}
     </Box>
   );
 }
