@@ -3,6 +3,10 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Box from '@mui/material/Box';
 
 import product1 from '../assets/Layer_11.png';
 import product2 from '../assets/Layer_12.png';
@@ -41,16 +45,45 @@ const hits = [
   },
 ];
 
+const extendedHits = [...hits, ...hits, ...hits];
+
+const ScrollContainer = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  position: 'relative',
+  width: '100%',
+  overflow: 'hidden',
+});
+
+const ScrollableGrid = styled(Box)({
+  display: 'flex',
+  overflowX: 'auto',
+  scrollBehavior: 'smooth',
+  gap: '13px',
+  padding: '16px 0',
+  scrollbarWidth: 'none',
+  '&::-webkit-scrollbar': {
+    display: 'none',
+  },
+  msOverflowStyle: 'none',
+  width: 'calc(100% + 24px)',
+  marginLeft: '-12px', 
+});
+
 const ProductContainer = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   padding: '16px',
+  width: 'calc(25% - 18px)', 
+  minWidth: '280px',
+  flexShrink: 0,
+  backgroundColor: '#fff',
 });
 
 const ProductImage = styled('img')({
   width: '100%',
-  height: '230px',
+  height: '280px',
   objectFit: 'contain',
   marginBottom: '30px',
 });
@@ -60,6 +93,7 @@ const ProductName = styled(Typography)({
   fontWeight: '500',
   marginBottom: '1px',
   textDecoration: 'underline',
+  fontSize: '1.2rem',
 });
 
 const ProductCode = styled(Typography)({
@@ -98,7 +132,7 @@ const AddButton = styled(Button)(({ theme }) => ({
   minWidth: '120px',
   textTransform: 'none',
   '&:hover': {
-  backgroundColor: '#fbc02d',
+    backgroundColor: '#fbc02d',
   },
 }));
 
@@ -127,12 +161,51 @@ const BannerText = styled(Typography)({
   textShadow: '1px 1px 2px rgba(255,255,255,0.8)',
 });
 
+const ArrowButton = styled(IconButton)({
+  position: 'absolute',
+  zIndex: 1,
+  backgroundColor: 'rgba(255, 255, 255, 0.8)',
+  '&:hover': {
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+  },
+});
+
 export default function HitsGrid() {
+  const scrollRef = React.useRef(null);
+  const [showLeftArrow, setShowLeftArrow] = React.useState(false);
+  const [showRightArrow, setShowRightArrow] = React.useState(true);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = 304; 
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  React.useEffect(() => {
+    const container = scrollRef.current;
+    const updateArrows = () => {
+      if (container) {
+        setShowLeftArrow(container.scrollLeft > 0);
+        setShowRightArrow(
+          container.scrollLeft < container.scrollWidth - container.clientWidth
+        );
+      }
+    };
+    
+    container?.addEventListener('scroll', updateArrows);
+    return () => container?.removeEventListener('scroll', updateArrows);
+  }, []);
+
   return (
     <div style={{ 
-      padding: '24px',
+      padding: '60px',
       maxWidth: '1600px',
       margin: '0 auto',
+      position: 'relative',
     }}>
       <BannerContainer>
         <BannerImage
@@ -148,10 +221,16 @@ export default function HitsGrid() {
         </BannerText>
       </BannerContainer>
       
-      <Grid container spacing={4}>
-        {hits.map((product, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
-            <ProductContainer>
+      <ScrollContainer>
+        {showLeftArrow && (
+          <ArrowButton onClick={() => scroll('left')} sx={{ left: 0 }}>
+            <ChevronLeftIcon fontSize="large" />
+          </ArrowButton>
+        )}
+        
+        <ScrollableGrid ref={scrollRef}>
+          {extendedHits.map((product, index) => (
+            <ProductContainer key={index}>
               <ProductImage
                 src={product.image}
                 alt={product.name}
@@ -181,9 +260,18 @@ export default function HitsGrid() {
                 В корзину
               </AddButton>
             </ProductContainer>
-          </Grid>
-        ))}
-      </Grid>
+          ))}
+        </ScrollableGrid>
+        
+        {showRightArrow && (
+          <ArrowButton 
+            onClick={() => scroll('right')}
+            sx={{ right: 0 }}
+          >
+            <ChevronRightIcon fontSize="large" />
+          </ArrowButton>
+        )}
+      </ScrollContainer>
     </div>
   );
 }
